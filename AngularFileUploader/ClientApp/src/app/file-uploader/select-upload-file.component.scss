@@ -1,0 +1,22 @@
+select-upload-file{
+
+  .file-name{
+    float:left;
+    width:90%;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
+  .alert-file{
+    margin-bottom:10px;
+    background-color:#acecec;
+    border-color:#acecec;
+    color:dodgerblue;
+
+  }
+
+  .btn-primary[disabled]{
+    background-color: #0076a3; 
+  }
+}
