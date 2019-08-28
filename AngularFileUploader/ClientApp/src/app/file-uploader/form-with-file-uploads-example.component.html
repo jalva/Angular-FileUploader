@@ -2,7 +2,7 @@
   <div class="panel-heading">Example of a form with file uploads</div>
   <div class="panel-body">
     <form 
-          action="/api/post-example"
+          action="/api/file-upload"
           [formGroup]="sampleForm"
           uploadFilesForm
           [theForm]="sampleForm"
@@ -13,7 +13,7 @@
 
       <div class="form-group">
         <label class="required">Some form field 1</label>
-        <input type="text" class="form-control" [formControl]="someFormField1" />
+        <input type="text" class="form-control" [formControl]="someFormField1" name="someFormValue1" />
         <div class="alert alert-danger" *ngIf="!someFormField1.pristine && someFormField1.errors?.required">Required field</div>
       </div>
 

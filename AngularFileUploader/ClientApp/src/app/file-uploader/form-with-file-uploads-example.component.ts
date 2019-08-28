@@ -2,7 +2,7 @@ import { SelectUploadFileComponent } from "./select-upload-file.component";
 import { Component, ViewChild, OnInit, TemplateRef } from "@angular/core";
 import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { FileUploadApiError, ExampleFormPostModel } from "./dtos";
+import { ExampleFormPostModel, FormPostResponse } from "./dtos";
 
 @Component({
   selector: "form-with-file-uploads-example",
@@ -76,12 +76,12 @@ export class FormWithFileUploadsExample implements OnInit
     return this.sampleForm.valid;
   }
 
-  public successFormPostCallback($event) {
-
+  public successFormPostCallback(response:FormPostResponse) {
+    console.log(response.message);
   }
 
-  public errorFormPostCallback(error: FileUploadApiError | string) {
-    
+  public errorFormPostCallback(error: string) {
+    console.error(error);
   }
 
   public decline() {

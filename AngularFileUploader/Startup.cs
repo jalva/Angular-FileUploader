@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AngularFileUploader.Middleware;
 
 namespace AngularFileUploader
 {
@@ -46,6 +47,15 @@ namespace AngularFileUploader
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
+            // include the custom middleware and target a particular url
+            /*app.MapWhen(
+                context => context.Request.Path.ToString().EndsWith("some-url"),
+                appBranch =>
+                {
+                    // ... optionally add more middleware to this branch
+                    appBranch.UseMySampleMiddleware();
+                });*/
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -62,7 +72,8 @@ namespace AngularFileUploader
 
                 if (env.IsDevelopment())
                 {
-                    spa.UseAngularCliServer(npmScript: "start");
+                    //spa.UseAngularCliServer(npmScript: "start");
+                    spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
                 }
             });
         }
